@@ -1,5 +1,7 @@
 ﻿using Advice.Data.DbContext;
 using Advice.Data.IUnitOfWork.Interfaces;
+using Advice.Data.Model;
+using Microsoft.EntityFrameworkCore;
 
 namespace Advice.Data.IUnitOfWork.Repositories
 {
@@ -19,6 +21,11 @@ namespace Advice.Data.IUnitOfWork.Repositories
             Schools = new SchoolRepository(context);
             Students = new StudentRepository(context);
             Teachers = new TeacherRepository(context);
+        }
+
+        public DbSet<TEntity> Context<TEntity>() where TEntity : EntityBase
+        {
+            return _context.Set<TEntity>();
         }
 
         public async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

@@ -6,7 +6,7 @@ namespace Advice.Domain.Services
 {
     public class StudentService : BaseService<Student>, IStudentService
     {
-        public StudentService(IUnitOfWork repositories, IBaseRepository<Student> baseRepository) : base(repositories, baseRepository)
+        public StudentService(IUnitOfWork repositories) : base(repositories)
         {
         }
     }

@@ -8,7 +8,7 @@ namespace Advice.Domain.Services
 {
     public class CourseService : BaseService<Course>, ICourseService
     {
-        public CourseService(IUnitOfWork repositories, IBaseRepository<Course> baseRepository) : base(repositories, baseRepository)
+        public CourseService(IUnitOfWork repositories) : base(repositories)
         {
         }
     }

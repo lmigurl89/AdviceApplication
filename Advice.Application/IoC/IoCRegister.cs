@@ -1,6 +1,9 @@
 ﻿using Advice.Data.DbContext;
 using Advice.Data.IUnitOfWork.Interfaces;
 using Advice.Data.IUnitOfWork.Repositories;
+using Advice.Data.Model;
+using Advice.Domain.Interfaces;
+using Advice.Domain.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -18,6 +21,7 @@ namespace Advice.IoC
             AddRegisterDataContext(services, configuration);
             AddRegisterServices(services, configuration);
             AddRegisterRepositories(services);
+            AddRegisterDomainServices(services);
             AddRegisterPolicies(services);
 
             return services;
@@ -76,6 +80,12 @@ namespace Advice.IoC
             services.AddScoped<IStudentRepository, StudentRepository>();
             services.AddScoped<ICourseRepository, CourseRepository>();
             services.AddScoped<ITeacherRepository, TeacherRepository>();
+            return services;
+        }
+
+        public static IServiceCollection AddRegisterDomainServices(this IServiceCollection services)
+        {
+            services.AddScoped<ISchoolService, SchoolService>();
 
             return services;
         }
